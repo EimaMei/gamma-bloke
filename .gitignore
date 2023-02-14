@@ -1,0 +1,15 @@
+# Folders
+.vscode/
+build/
+res/
+source/test
+games/
+
+# Files 
+Makefile
+*.exe
+*.dll
+*.o
+*.ttf
+.DS_Store
+include/*.hpp
