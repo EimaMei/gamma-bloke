@@ -9,7 +9,7 @@ BACKEND = $(OUTPUT)/libGamma.a
 
 SRC = source/main.c
 FLAGS = -O2 -std=c89
-LIBS = $(BACKEND)
+LIBS = $(BACKEND) -lopengl32 -lgdi32 -lShcore
 INCLUDE = -I"include"
 
 
@@ -21,7 +21,7 @@ run: $(EXE)
 clean:
 	rm $(OUTPUT)/**
 
-$(EXE): $(SRC)
+$(EXE): $(SRC) $(BACKEND)
 	$(CC) $(FLAGS) $(INCLUDE) $(SRC) $(LIBS) -o $@
 
 $(BACKEND): $(BACKEND-OBJ)
@@ -29,7 +29,7 @@ $(BACKEND): $(BACKEND-OBJ)
 	@strip --strip-unneeded $@
 
 $(OUTPUT)/%.o: source/emulator/%.c
-	$(CC) $(FLAGS) $(INCLUDE) $^ -c -o $@
+	$(CC) $(FLAGS) $(INCLUDE) $(BACKEND-LIBS) $^ -c -o $@
 
 $(OUTPUT):
 	mkdir $(OUTPUT)

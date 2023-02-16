@@ -1,5 +1,6 @@
 #include <emulator.h>
 
+
 void rom_init(const char* filename, ROM* output) {
 	FILE* file;
 	errno_t error;
@@ -13,7 +14,7 @@ void rom_init(const char* filename, ROM* output) {
 	output->size = ftell(file);
 	rewind(file);
 
-	output->data = (uint8*)malloc(output->size * sizeof(uint8));
+	output->data = (u8*)malloc(output->size * sizeof(u8));
 
 	if (!output->data) {
 		printf("Error: Failed to allocate memory for 'output->data'.\n");
@@ -21,7 +22,7 @@ void rom_init(const char* filename, ROM* output) {
 		return ;
 	}
 
-	fread_s((uint8*)output->data, output->size, sizeof(unsigned char), output->size, file);
+	fread_s((u8*)output->data, output->size, sizeof(unsigned char), output->size, file);
 	fclose(file);
 }
 
@@ -33,7 +34,7 @@ void rom_read_metadata(ROM* rom) {
 	char* buffer = malloc(16 + 1);
 
 	int j = 0;
-	const uint8* start = &rom->data[0x0134];
+	const u8* start = &rom->data[0x0134];
 	for (start; start != &rom->data[0x0143]; start++) {
 		unsigned char character = *start;
 
