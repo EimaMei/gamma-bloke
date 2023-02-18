@@ -3,7 +3,7 @@ OUTPUT = build
 NAME = gbtime
 EXE = $(OUTPUT)/$(NAME).exe
 
-BACKEND-SRC = $(basename $(wildcard source/emulator/*.c))
+BACKEND-SRC = $(basename $(wildcard source/emulator/*.c) $(wildcard source/ESGL/*.c))
 BACKEND-OBJ = $(addprefix $(OUTPUT)/,$(addsuffix .o,$(notdir $(BACKEND-SRC))))
 BACKEND = $(OUTPUT)/libGamma.a
 
@@ -29,6 +29,9 @@ $(BACKEND): $(BACKEND-OBJ)
 	@strip --strip-unneeded $@
 
 $(OUTPUT)/%.o: source/emulator/%.c
+	$(CC) $(FLAGS) $(INCLUDE) $(BACKEND-LIBS) $^ -c -o $@
+
+$(OUTPUT)/%.o: source/esgl/%.c
 	$(CC) $(FLAGS) $(INCLUDE) $(BACKEND-LIBS) $^ -c -o $@
 
 $(OUTPUT):
