@@ -21,7 +21,7 @@
 */
 #pragma once
 
-#include "defines.hpp"
+#include "defines.h"
 
 /* ====== Window related functions ====== */
 
