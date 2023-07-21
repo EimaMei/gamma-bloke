@@ -15,6 +15,9 @@ Just download the repo and run `make` in the terminal.
 In `source/main.c`, there are 2 define modes that you can set to 0 or 1. Both macros contain a comment explaining what they enable/disable.
 
 # Update Log & Diary on using C
+## Update (2023-07-21)
+In short, I am completely reworking this emulator. I am not sure when I'll publically release the repository yet as I want to actually get the PPU rendering right to at least properly show the Nintendo lego when booting up the GB bootrom. All I can say is that it's 100x better than this repo.
+
 ## Second release (2023-02-18)
 Day 4 on this project. So far I don't have that many complaints with C89 (apart from forcing me to use `/* */` for comments and loops), but I guess that's mainly due to the fact that I am studying more on how to implement a GameBoy emulator rather than learning the ins and outs of C. Anyhow, I've implemented enough opcodes to fully boot into the GameBoy's startup ROM. I also now have implemented a really basic (and broken) PPU that barely displays anything, but it's a start regardless.
 
